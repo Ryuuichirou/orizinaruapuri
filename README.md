@@ -1,15 +1,11 @@
 ## users テーブル
 | Column             | Type    | Options                   |
 | ------------------ | ------- | ------------------------- |
-| first_name         | string  | null: false               |
-| last_name          | string  | null: false               |
-| first_name_kana    | string  | null: false               |
-| last_name_kana     | string  | null: false               |
+| user_name          | string  | null: false               |
 | email              | string  | null: false, unique: true |
 | password           | string  | null: false               |
 | encrypted_password | string  | null: false               |
 | occupation         | string  | null: false               |
-| prefectures_id     | integer | null: false               |
 | birthday           | date    | null: false               |
 - has_many :tweets
 - has_many :comments
