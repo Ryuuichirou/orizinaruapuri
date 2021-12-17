@@ -1,11 +1,11 @@
 ## users テーブル
 | Column             | Type    | Options                   |
 | ------------------ | ------- | ------------------------- |
-| user_name          | string  | null: false               |
+| name               | string  | null: false               |
 | email              | string  | null: false, unique: true |
 | password           | string  | null: false               |
 | encrypted_password | string  | null: false               |
-| occupation         | string  | null: false               |
+| profile            | text    |                           |
 | birthday           | date    | null: false               |
 - has_many :tweets
 - has_many :comments

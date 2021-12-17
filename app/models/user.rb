@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
 
         with_options presence: true do
-          validates :user_name
+          validates :name
           validates :password
           validates :birthday
           validates :profile
