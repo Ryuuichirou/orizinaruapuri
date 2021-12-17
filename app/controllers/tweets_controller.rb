@@ -8,12 +8,17 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweets = Tweet.new(tweet_params)
+    @tweet = Tweet.new(tweet_params)
+    if @tweet.save
+       redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
 
   def tweet_params
-    params.require(:tweet).permit(:name, :concept, :image)
+    params.require(:tweet).permit(:title, :concept, :image).merge(user_id: current_user.id)
   end
 end
