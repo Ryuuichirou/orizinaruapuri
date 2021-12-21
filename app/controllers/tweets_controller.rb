@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
     @tweets = Tweet.all
   end
@@ -24,6 +25,9 @@ class TweetsController < ApplicationController
 
   def edit
     @tweet = Tweet.find(params[:id])
+    unless current_user == @tweet.user
+      redirect_to action: :index
+    end
   end
 
   def update
@@ -44,6 +48,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:title, :concept, :image).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:title, :concept, :image).merge(user_id:current_user.id)
   end
 end
